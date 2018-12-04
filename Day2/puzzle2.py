@@ -2,14 +2,12 @@
 
 def main():
     file = open("input.txt", "r")
-    input = file.readlines()
+    input = [i.strip() for i in file.readlines()]
     for comparer in input:
-        comparer = comparer.strip()
         for comparee in input:
-            comparee = comparee.strip()
-            nonMatchingIndexes = [i for i in range(len(comparer)) if comparer[i] != comparee[i]]
-            if (len(nonMatchingIndexes) == 1):
-                print(comparer[:nonMatchingIndexes[0]] + comparer[nonMatchingIndexes[0]+1:])
+            non_matching_indexes = [i for i in range(len(comparer)) if comparer[i] != comparee[i]]
+            if (len(non_matching_indexes) == 1):
+                print(comparer[:non_matching_indexes[0]] + comparer[non_matching_indexes[0]+1:])
                 return
 
 if __name__ == '__main__':
